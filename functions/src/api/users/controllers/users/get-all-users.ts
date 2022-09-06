@@ -8,7 +8,7 @@ export const getAllUsers = async (_: Request, res: Response) => {
     const usersResponseData = users.map((user) => ({
       uid: user.uid,
       email: user.email,
-      roles: user.customClaims?.role ?? "",
+      role: user.customClaims?.role ?? "",
     }));
 
     return res.json({ users: usersResponseData });
