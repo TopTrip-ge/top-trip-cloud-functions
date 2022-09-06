@@ -1,0 +1,39 @@
+{
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve:dev": "npm run build && firebase emulators:start --only functions -P dev",
+    "shell:dev": "npm run build && firebase functions:shell -P dev",
+    "start:dev": "npm run shell -P dev",
+    "logs:dev": "firebase functions:log -P dev",
+    "deploy:dev": "firebase deploy --only functions -P dev",
+    "serve:prod": "npm run build && firebase emulators:start --only functions -P prod",
+    "shell:prod": "npm run build && firebase functions:shell -P prod",
+    "start:prod": "npm run shell",
+    "logs:prod": "firebase functions:log -P prod",
+    "deploy:prod": "firebase deploy --only functions -P prod"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^0.2.0",
+    "typescript": "^4.5.4"
+  },
+  "private": true
+}

@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "dev": "top-trip-1e5d1",
+    "prod": "top-trip-prod"
+  }
+}
