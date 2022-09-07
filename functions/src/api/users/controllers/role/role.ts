@@ -1,6 +1,6 @@
 import { Response } from "express";
 import * as admin from "firebase-admin";
-import { handleApiError } from "../../../../utils/handle-api-error";
+import { handleApiError } from "../../../../utils";
 import { Request } from "./role-interfaces";
 
 export const addRole = async (req: Request, res: Response) => {

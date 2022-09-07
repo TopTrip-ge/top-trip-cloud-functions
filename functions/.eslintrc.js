@@ -30,5 +30,6 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     "linebreak-style": 0,
     "new-cap": ["error", { "capIsNew": false }],
+    "indent": ["error", 2],
   },
 };
