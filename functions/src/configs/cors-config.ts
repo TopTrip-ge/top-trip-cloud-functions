@@ -6,9 +6,15 @@ const whitelistOrigins = [
   "https://top-trip-prod.web.app",
 ];
 
+const pullRequestBranchUrlRegExp = /^https:\/\/top-trip-dev--.+\.web\.app$/g;
+
 export const corsConfig: CorsOptions = {
   origin: (origin, callback) => {
-    if (whitelistOrigins.includes(origin ?? "")) {
+    const originStr = origin ?? "";
+    if (
+      whitelistOrigins.includes(originStr) ||
+      pullRequestBranchUrlRegExp.test(originStr)
+    ) {
       callback(null, true);
 
       return;
