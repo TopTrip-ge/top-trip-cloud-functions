@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { isAdmin, isAuthorized } from "../../middlewares";
-import { addRole, getAllUsers } from "./controllers";
+import { addRole, createUser, getAllUsers } from "./controllers";
 
 export const userRouter = Router();
 
@@ -8,4 +8,5 @@ export const userRouter = Router();
 userRouter.get("/", isAuthorized, isAdmin, getAllUsers);
 
 // Posts
+userRouter.post("/create", isAuthorized, isAdmin, createUser);
 userRouter.post("/role/add", isAuthorized, isAdmin, addRole);
