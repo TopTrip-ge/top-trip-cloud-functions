@@ -6,7 +6,7 @@ export const userRouter = Router();
 
 // Gets
 userRouter.get("/", isAuthorized, isAdmin, getAllUsers);
-userRouter.get("/:uid", getUserById);
+userRouter.get("/:uid", isAuthorized, getUserById);
 
 // Posts
 userRouter.post("/create", isAuthorized, isAdmin, createUser);
