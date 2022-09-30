@@ -10,3 +10,10 @@ export interface GetUserRequest extends Request {
     uid: string;
   };
 }
+
+export interface UpdateUserRequest extends Request {
+  body: Omit<UserPayload, "password">;
+  params: {
+    uid: string;
+  };
+}
