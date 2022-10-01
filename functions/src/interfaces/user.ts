@@ -15,13 +15,17 @@ export interface UserPayload {
   car?: Car;
 }
 
-export interface UserRecord extends FirebaseUserRecord {
-  customClaims: {
-    availableLanguages: AVAILABLE_LANGUAGES[];
-    car: Car;
-    hasWifi: boolean;
-    role: USER_ROLES;
-    salary: number;
-    withAnimal: boolean;
-  };
+export type UserRecordInFirestore = Omit<
+  UserPayload,
+  "firstName" | "lastName" | "password" | "role"
+>;
+
+export interface UserRecord {
+  role: USER_ROLES;
+  displayName: FirebaseUserRecord["displayName"];
+  email: FirebaseUserRecord["email"];
 }
+
+export type MapUserToRecord = UserRecord & {
+  additionalInfo: UserRecordInFirestore | null;
+};

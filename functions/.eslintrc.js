@@ -31,5 +31,6 @@ module.exports = {
     "linebreak-style": 0,
     "new-cap": ["error", { "capIsNew": false }],
     "indent": ["error", 2],
+    "operator-linebreak": 0,
   },
 };
