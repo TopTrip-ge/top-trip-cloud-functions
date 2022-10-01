@@ -1,6 +1,6 @@
 import { Response } from "express";
 import * as admin from "firebase-admin";
-import { USER_ROLES } from "../../../../enums";
+import { DBCollections, USER_ROLES } from "../../../../enums";
 import { handleApiError } from "../../../../utils";
 import { CreateUserRequest } from "./users-interfaces";
 
@@ -21,6 +21,8 @@ export const createUser = async (req: CreateUserRequest, res: Response) => {
       },
     } = req;
     const authInstance = admin.auth();
+    const firestoreInstance = req.firebase.firestoreInstance;
+
     const { uid } = await authInstance.createUser({
       email,
       password,
@@ -30,10 +32,13 @@ export const createUser = async (req: CreateUserRequest, res: Response) => {
     await authInstance.setCustomUserClaims(uid, {
       role,
     });
+    await firestoreInstance.collection(DBCollections.USERS).doc(uid).set({
+      role,
+    });
 
     // Add additional params if driver
     if (role === USER_ROLES.DRIVER) {
-      await authInstance.setCustomUserClaims(uid, {
+      await firestoreInstance.collection(DBCollections.USERS).doc(uid).set({
         availableLanguages,
         car,
         hasWifi,

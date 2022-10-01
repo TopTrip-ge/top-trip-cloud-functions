@@ -1,16 +1,25 @@
-import { UserPayload, UserRecord } from "../interfaces";
+import { MapUserToRecord } from "../interfaces";
 
 export const mapUserToRecord = ({
   displayName,
-  customClaims,
+  role,
   email,
-}: UserRecord): Omit<UserPayload, "password"> => {
+  additionalInfo,
+}: MapUserToRecord) => {
   const [firstName, lastName] = displayName?.split(" ") ?? [];
-
-  return {
-    ...customClaims,
+  const record = {
+    role,
     firstName,
     lastName,
     email: email ?? "",
   };
+
+  if (additionalInfo) {
+    return {
+      ...record,
+      ...additionalInfo,
+    };
+  }
+
+  return record;
 };
