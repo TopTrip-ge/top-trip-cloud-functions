@@ -3,9 +3,9 @@ import * as admin from "firebase-admin";
 import { DBCollections } from "../../../../enums";
 import { UserRecordInFirestore } from "../../../../interfaces";
 import { handleApiError, mapUserToRecord } from "../../../../utils";
-import { GetUserRequest } from "./users-interfaces";
+import { RequestWithUserId } from "./users-interfaces";
 
-export const getUserById = async (req: GetUserRequest, res: Response) => {
+export const getUserById = async (req: RequestWithUserId, res: Response) => {
   try {
     const { uid } = req.params;
     const user = await admin.auth().getUser(uid);

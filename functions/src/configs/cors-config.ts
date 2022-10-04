@@ -13,6 +13,7 @@ export const exposedHeaders = `Content-Type, ${X_USER_TOKEN_ID}`;
 
 export const corsConfig: CorsOptions = {
   origin: (origin, callback) => {
+    console.log(origin);
     const originStr = origin ?? "";
     if (
       whitelistOrigins.includes(originStr) ||
