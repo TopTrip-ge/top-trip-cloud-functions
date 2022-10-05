@@ -11,7 +11,7 @@ import {
 export const userRouter = Router();
 
 // Gets
-userRouter.get("/", isAuthorized, isAdmin, getAllUsers);
+userRouter.get("/", isAdmin, isAuthorized, getAllUsers);
 userRouter.get("/:uid", isAuthorized, getUserById);
 
 // Posts
