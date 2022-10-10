@@ -16,7 +16,6 @@ const isValidOrigin = (origin: string) =>
 
 export const corsConfig: CorsOptions = {
   origin: (origin, callback) => {
-    console.log(origin);
     const originStr = origin ?? "";
     if (isValidOrigin(originStr)) {
       callback(null, true);
@@ -27,11 +26,13 @@ export const corsConfig: CorsOptions = {
     callback(new Error("Not allowed by CORS"));
   },
   exposedHeaders,
+  maxAge: 0,
+  methods: "GET,POST,PUT,DELETE",
 };
 
 export const preflightHeaders = (origin: string) => {
   let accessControlAllowOrigin: string | null = origin;
-
+  console.log(accessControlAllowOrigin);
   if (!isValidOrigin(origin)) {
     accessControlAllowOrigin = null;
   }
@@ -40,5 +41,6 @@ export const preflightHeaders = (origin: string) => {
     "Access-Control-Allow-Origin": accessControlAllowOrigin,
     "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE",
     "Access-Control-Allow-Headers": exposedHeaders,
+    "Access-Control-Max-Age": 0,
   };
 };

@@ -9,18 +9,20 @@ import {
   getUserById,
   updateUser,
 } from "./controllers";
+import { unbanUser } from "./controllers/users/unban-user";
 
 export const userRouter = Router();
 
 // Gets
-userRouter.get("/", isAdmin, isAuthorized, getAllUsers);
-userRouter.get("/:uid", isAuthorized, getUserById);
-userRouter.get("/banned", isAdmin, isAuthorized, getBannedUsers);
+userRouter.get("/", isAuthorized, isAdmin, getAllUsers);
+userRouter.get("/banned", isAuthorized, isAdmin, getBannedUsers);
+userRouter.get("/user/:uid", isAuthorized, getUserById);
 
 // Posts
 userRouter.post("/create", isAuthorized, isAdmin, createUser);
 userRouter.post("/role/add", isAuthorized, isAdmin, addRole);
-userRouter.post("/ban/:uid", isAuthorized, isAdmin, banUser);
 
 // Puts
 userRouter.put("/update/:uid", isAuthorized, isAdmin, updateUser);
+userRouter.put("/ban/:uid", isAuthorized, isAdmin, banUser);
+userRouter.put("/unban/:uid", isAuthorized, isAdmin, unbanUser);

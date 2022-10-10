@@ -4,12 +4,12 @@ import * as express from "express";
 import { applyRoutes } from "./api";
 import { applyGlobalMiddlewares, cloudFunctionsPreflight } from "./middlewares";
 
+admin.initializeApp();
+
 const app = express();
 
 applyGlobalMiddlewares(app);
 applyRoutes(app);
-
-admin.initializeApp();
 
 export const api = functions
   .region("europe-west3")
