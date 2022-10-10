@@ -5,7 +5,7 @@ export interface CreateUserRequest extends Request {
   body: UserPayload;
 }
 
-export interface GetUserRequest extends Request {
+export interface RequestWithUserId extends Request {
   params: {
     uid: string;
   };

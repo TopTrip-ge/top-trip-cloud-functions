@@ -9,8 +9,8 @@ export const isAuthorized = async (
   next: NextFunction
 ) => {
   try {
-    const { headers } = req;
-    const userTokenId = headers[X_USER_TOKEN_ID];
+    const { query } = req;
+    const userTokenId = query[X_USER_TOKEN_ID];
 
     if (!userTokenId) {
       return res
@@ -30,8 +30,8 @@ export const isAdmin = async (
   next: NextFunction
 ) => {
   try {
-    const { headers } = req;
-    const userTokenId = headers[X_USER_TOKEN_ID];
+    const { query } = req;
+    const userTokenId = query[X_USER_TOKEN_ID];
 
     const user = await admin.auth().verifyIdToken(userTokenId as string);
     const isAdmin = hasRoles([user.role]);
