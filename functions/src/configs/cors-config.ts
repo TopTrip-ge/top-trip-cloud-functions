@@ -7,7 +7,7 @@ export const whitelistOrigins = [
   "https://top-trip-prod.web.app",
 ];
 
-const pullRequestBranchUrlRegExp = /^https:\/\/top-trip-dev--.+\.web\.app$/g;
+const pullRequestBranchUrlRegExp = /^https:\/\/top-trip-dev--.+\.web\.app$/;
 
 export const exposedHeaders = `Content-Type, ${X_USER_TOKEN_ID}`;
 
