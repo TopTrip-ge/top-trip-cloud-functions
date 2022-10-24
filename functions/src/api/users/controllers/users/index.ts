@@ -4,3 +4,4 @@ export * from "./get-user-by-id";
 export * from "./update-user";
 export * from "./ban-user";
 export * from "./get-banned-users";
+export * from "./unban-user";
