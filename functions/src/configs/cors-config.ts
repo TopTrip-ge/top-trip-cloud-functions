@@ -17,9 +17,8 @@ const isValidOrigin = (origin: string) =>
 export const corsConfig: CorsOptions = {
   origin: (origin, callback) => {
     const originStr = origin ?? "";
-    if (isValidOrigin(originStr)) {
+    if (origin === undefined || isValidOrigin(originStr)) {
       callback(null, true);
-
       return;
     }
 
