@@ -14,9 +14,6 @@ export const getAllOrders = async (req: Request, res: Response) => {
       order.id = doc.id;
       orders.push(order);
     });
-    // const ordersResponseData = orders
-    //   .filter( (order) => (order.status != ORDER_STATUSES.DECLINED
-    //                      && order.status != ORDER_STATUSES.CANCELED));
 
     return res.json({ orders });
   } catch (err) {
