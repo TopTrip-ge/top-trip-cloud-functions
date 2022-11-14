@@ -17,6 +17,7 @@ export const createOrder = async (req: CreateOrderRequest, res: Response) => {
         language,
         car,
         price,
+        commission,
         comment,
       },
     } = req;
@@ -33,11 +34,12 @@ export const createOrder = async (req: CreateOrderRequest, res: Response) => {
       language,
       car,
       price,
+      commission,
       comment,
       status: ORDER_STATUSES.CREATED,
     });
 
-    return res.json({ id, message: "Success!" });
+    return res.json({ id, ok: true, message: "Success!" });
   } catch (err) {
     return handleApiError(res, err);
   }
